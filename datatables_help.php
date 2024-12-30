@@ -24,7 +24,7 @@
             <p>
                 The default number of entries shown when the page is first loaded is <b>10</b>. You can change this to 10, 25, 100 or All. The setting is found in the lower left corner under the table - you may have to scroll down.
                 <p>
-                    Depending on the size of your display, resolution, or zoom level, you will probably notice green plus signs in the leftmost column. Clicking the green plus sign will expand and show the remainder of the data that couldn't fit on screen.
+                    Depending on the size of your display, resolution, or zoom level, you will probably notice expand/collapse triangles in the leftmost column. Toggling the triangle will expand and show the remainder of the data that couldn't fit on screen.
                     You can use the <b>Toggle Columns</b> dropdown button to turn on/off specific columns for display purposes. Please know that all columns are automatically toggled on whenever the DataTables page is reloaded.
                     <p>
                         As you type in the <b>Search</b> box to the upper right, your results are automatically filtered as you type. Text is case-insensitive meaning "ABC" is the same as "abc".
