@@ -20,10 +20,10 @@
     <hr>
     <?php
     echo "<h3>Counts: What do I do?</h3>";
-    echo "Click through each sub-menu item: OS Version, Org Units, etc. <br>";
-    echo "The sub-menu title should indicate what is being queried and counted. <br>";
-    echo "Theses counts are computed by using the locally stored database. <br>";
-    echo "More pre-defined queries <i>may</i> be added in the future. <br>";
+    echo "<p>Click through each sub-menu item: OS Version, Org Units, Models, etc. </p>";
+    echo "<p>The sub-menu title should indicate what is queried, counted and totalled. </p>";
+    echo "<p>Theses counts are computed by using the locally stored database. </p>";
+    echo "<p>More pre-defined queries <i>may</i> be added in the future. </p>";
     ?>
 
     <?php include "footer.php" ?>
