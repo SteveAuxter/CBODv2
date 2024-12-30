@@ -123,7 +123,7 @@ $(document).ready(function() {
             while ($row = $query_result->fetchArray(SQLITE3_ASSOC)) {
                 ?>
                 <!-- Exit PHP and populate HTML table -->
-                <tr>
+                <tr align="center">
                     <td><?php echo $row["annotatedAssetId"]; ?></td>
                     <td><?php echo $row["serialNumber"]; ?></td>
                     <td><?php echo (str_replace('\\\n', '<br>', $row["notes"])); ?></td>
