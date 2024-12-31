@@ -55,7 +55,7 @@
 
         // Backup Database
         if (isset($_POST['backup_db']) && $DBexists) {
-            $backupFileName = 'backups/' . date('Ymd_His') . '_' . basename($DBname);
+            $backupFileName = 'backups/' . basename($DBname) . '_' . date('Ymd_His');
             if (copy($DBname, $backupFileName)) {
                 echo "Database backed up successfully to $backupFileName!";
             } else {
