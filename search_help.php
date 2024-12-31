@@ -23,7 +23,8 @@
     echo "<p>Clicking linked Asset ID will open Asset ID > Device Info, showing details direct from Google query - <i>including</i> Recent User List. </p>";
     echo "<p>Clicking linked Serial Number will open Serial Number > Device Info, showing details direct from Google query - <i>including</i> Recent User List. </p>";
     echo "<p>Clicking linked Device ID will open the device page directly in Google Admin console. </p>";
-    echo "<p><a href='https://github.com/SteveAuxter/CBODv2/wiki/Search' target='_blank'>" . "Check the wiki on GitHub" . "</a></p>";
+    echo "<h3>Check the Github Wiki</h3>";
+    echo "<p>You can find additional information at the <a href='https://github.com/SteveAuxter/CBODv2/wiki/Search'>CBODv2 Github Wiki</a>. </p>";
     ?>
 
     <?php include "footer.php" ?>
