@@ -16,7 +16,7 @@
     <hr>
     <!-- Search form with sorting options (Asset ID default sort) -->
     <form name="search" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET">
-        Enter full or partial Asset ID, Serial Number, or Note:
+        Enter full or partial Asset ID, Serial Number, or Note, then press Search:
         <br><br>
         <input type="text" name="search_term">
         <input type="submit" value="Search">
