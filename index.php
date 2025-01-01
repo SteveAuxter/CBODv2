@@ -7,6 +7,6 @@
     <title>REDIRECTING...</title>
 </head>
 <body>
-    <?php header("Location: search_main.php"); ?>
+    <?php header("Location: search_main.php"); exit(); ?>
 </body>
 </html>
