@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="mystyle.css">
-    <title>Serial Number: Clear Profiles</title>
+    <title>Serial Number: Telemetry Data</title>
 </head>
 <body>
     <?php include "serial_header.php" ?>
@@ -11,17 +11,17 @@
 
     <ul class="menu">
         <li><a href="serial_main.php">Device Info</a></li>
-        <li><a class="active" href="serial_wipeusers.php">Clear Profiles</a></li>
+        <li><a href="serial_wipeusers.php">Clear Profiles</a></li>
         <li><a href="serial_powerwash.php">Remote Powerwash</a></li>
         <li><a href="serial_disable.php">Disable/Enable</a></li>
-        <li><a href="serial_telemetry.php">Telemetry Data</a></li>
+        <li><a class="active" href="serial_telemetry.php">Telemetry Data</a></li>
         <li><a href="serial_help.php">Help</a></li>
     </ul>
     <hr>
 
     <form name="search" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET">
         Search: <input type="text" name="search_term">
-        <input type="submit" value="Clear Profiles">
+        <input type="submit" value="Get Telemetry Data">
     </form>
     <br><br>
 
@@ -111,15 +111,16 @@
                     $duration = $endtime - $starttime;
                     echo "<br><center>Database query took " . number_format((float)$duration, 4) . " seconds.</center>";
                     echo "<hr>";
-                    echo "<h3>Clearing user profiles on device with Serial Number <font color='#008CBA'>$search_term</font>. Here's what happened:</h3>";
+                    echo "<h3>Getting telemetry data on device with Serial Number <font color='#008CBA'>$search_term</font>. Here's what happened:</h3>";
+                    $serial_number_search = htmlspecialchars($row['serialNumber']);
 
-                    // GAM Script: Proceed to query additional information from Google
-                    $command1 = sprintf("$GAMpath issuecommand cros query id:%s command wipe_users doit", $search_term);
+                    // GAM Script: info crostelemetry only works using Serial Number
+                    $command1 = sprintf("$GAMpath info crostelemetry %s", $serial_number_search);
                     exec($command1, $infoBasic);
 
                     // Process and display the GAM data
                     foreach ($infoBasic as $data) {
-                        echo $data;
+                        echo str_replace(" ", "&nbsp;", $data);
                         echo "<br>";
                     }
                     echo "<br>";

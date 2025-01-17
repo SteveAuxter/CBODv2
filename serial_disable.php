@@ -14,7 +14,7 @@
         <li><a href="serial_wipeusers.php">Clear Profiles</a></li>
         <li><a href="serial_powerwash.php">Remote Powerwash</a></li>
         <li><a class="active" href="serial_disable.php">Disable/Enable</a></li>
-        <!-- <li><a href="serial_telemetry.php">Telemetry Data</a></li> -->
+        <li><a href="serial_telemetry.php">Telemetry Data</a></li>
         <li><a href="serial_help.php">Help</a></li>
     </ul>
     <hr>
