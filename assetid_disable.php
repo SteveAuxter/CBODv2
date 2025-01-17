@@ -14,7 +14,7 @@
         <li><a href="assetid_wipeusers.php">Clear Profiles</a></li>
         <li><a href="assetid_powerwash.php">Remote Powerwash</a></li>
         <li><a class="active" href="assetid_disable.php">Disable/Enable</a></li>
-        <!-- <li><a href="assetid_telemetry.php">Telemetry Data</a></li> -->
+        <li><a href="assetid_telemetry.php">Telemetry Data</a></li>
         <li><a href="assetid_help.php">Help</a></li>
     </ul>
     <hr>

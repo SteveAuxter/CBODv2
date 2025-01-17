@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="mystyle.css">
-    <title>Asset ID: Remote Powerwash</title>
+    <title>Asset ID: Telemetry Data</title>
 </head>
 <body>
     <?php include "assetid_header.php" ?>
@@ -12,16 +12,16 @@
     <ul class="menu">
         <li><a href="assetid_main.php">Device Info</a></li>
         <li><a href="assetid_wipeusers.php">Clear Profiles</a></li>
-        <li><a class="active" href="assetid_powerwash.php">Remote Powerwash</a></li>
+        <li><a href="assetid_powerwash.php">Remote Powerwash</a></li>
         <li><a href="assetid_disable.php">Disable/Enable</a></li>
-        <li><a href="assetid_telemetry.php">Telemetry Data</a></li>
+        <li><a class="active" href="assetid_telemetry.php">Telemetry Data</a></li>
         <li><a href="assetid_help.php">Help</a></li>
     </ul>
     <hr>
 
     <form name="search" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET">
         Search: <input type="text" name="search_term">
-        <input type="submit" value="Remote Powerwash">
+        <input type="submit" value="Get Telemetry Data">
     </form>
     <br><br>
 
@@ -101,7 +101,7 @@
                         echo "<td>" . htmlspecialchars($row['annotatedLocation']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['annotatedUser']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['osVersion']) . "</td>";
-                        echo "<td><a href='https://admin.google.com/ac/chrome/devices/" . htmlspecialchars($row['deviceId']) . "' target='_blank'>" . $row['deviceId'] . "</a></td>";
+                        echo "<td><a href='https://admin.google.com/ac/chrome/devices/" . htmlspecialchars($row['deviceId']) . "' target='_blank'>" . htmlspecialchars($row['deviceId']) . "</a></td>";
                         echo "</tr>";
                     }
                     echo "</table>";
@@ -111,15 +111,16 @@
                     $duration = $endtime - $starttime;
                     echo "<br><center>Database query took " . number_format((float)$duration, 4) . " seconds.</center>";
                     echo "<hr>";
-                    echo "<h3>Performing a remote powerwash on device with Asset ID <font color='#008CBA'>$search_term</font>. Here's what happened:</h3>";
+                    echo "<h3>Getting telemetry data on device with Asset ID <font color='#008CBA'>$search_term</font>. Here's what happened:</h3>";
+                    $serial_number_search = htmlspecialchars($row['serialNumber']);
 
-                    // GAM Script: Proceed to query additional information from Google
-                    $command1 = sprintf("$GAMpath issuecommand cros query asset_id:%s command remote_powerwash doit", $search_term);
+                    // GAM Script: info crostelemetry only works using Serial Number
+                    $command1 = sprintf("$GAMpath info crostelemetry %s", $serial_number_search);
                     exec($command1, $infoBasic);
 
                     // Process and display the GAM data
                     foreach ($infoBasic as $data) {
-                        echo $data;
+                        echo str_replace(" ", "&nbsp;", $data);
                         echo "<br>";
                     }
                     echo "<br>";
