@@ -14,6 +14,7 @@
         <li><a href="counts_main.php">Counts</a></li>
         <li><a href="datatables_main.php">DataTables</a></li>
         <li><a href="utilities_main.php">Utilities</a></li>
+        <li><a href="beta_main.php">Experimental</a></li>
     </ul>
     <hr>
 </body>
