@@ -2,6 +2,9 @@
 $DBname = "YourFileNameHere.db"; //Must end with .db
 $GAMpath = "YourGAMexecutableHere";
 
+// $GAMpath = "/usr/local/bin/gam"; Linux example
+// $GAMpath = "C:\GAMADV\gam.exe"; Windows example
+
 // There is a complete list of timezones available to PHP in timezones.txt
 // The ones presented here are examples for the continental US
 // Simply uncomment your timezone (remove the leading slashes)
