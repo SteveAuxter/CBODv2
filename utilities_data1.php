@@ -33,7 +33,7 @@
     <?php
     $fullCommand = $GAMpath . ' config csv_output_column_delimiter ";" print cros fields annotatedAssetId,annotatedLocation,annotatedUser,autoUpdateExpiration,bootMode,ethernetMacAddress,firmwareVersion,lastEnrollmentTime,lastSync,macAddress,manufactureDate,model,notes,orgUnitPath,osVersion,platformVersion,serialNumber,status queries "status:ACTIVE","status:DISABLED" > CBODv2_' . date('Ymd_His') . '.csv';
     $escapedCommand = str_replace('\\', '\\\\', $fullCommand);
-    echo "<b>STEP (1):</b> Use the GAM command below to gather all the necessary Chromebook data from Google. The name of the CSV file at the end of the ling can be changed, if needed.";
+    echo "<b>STEP (1):</b> Use the GAM command below to gather all the necessary Chromebook data from Google. The name of the CSV file at the end of the line can be changed, if needed.";
     echo "<br><br>";
     echo "<div class='code-block'>";
     echo '<button class="copy-button" onclick="copyToClipboard(\'' . htmlspecialchars($escapedCommand) . '\')">Copy</button>';
