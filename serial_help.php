@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="mystyle.css">
     <title>Serial Number: Help</title>
+    <style>
+    span {
+        background-color: #f3f3f3;
+        font-family: monospace;
+        white-space: nowrap;
+    }
+    </style>
 </head>
 <body>
     <?php include "serial_header.php" ?>
@@ -18,35 +25,37 @@
     </ul>
     <hr>
     <?php
+    echo "<h3>The Process</h3>";
+    echo "<p>";
+    echo "In order to execute any of the GAM commands, CBOD will first query the local database for an exact match of the Serial Number entered. <br>";
+    echo "If no exact match is found the process stops immediately and a message appears indicating as much. No GAM commands are executed. <br>";
+    echo "Assuming an exact match is found in the local database, that info is displayed first and then GAM commands are executed. <br>";
+
     echo "<h3>Serial Number: Device Info</h3>";
     echo "<p>";
-    echo "Enter a Serial Number and click Search for single Serial #.<br>";
-    echo "CBOD will first query the local database for an <b>EXACT MATCH</b> and provide a single result if one is found.<br>";
-    echo "NOTE: If no exact match is found the process stops and a message appears indicating as much.<br>";
-
-    echo "<p>";
-    echo "Assuming a match is found in the local database ...<br>";
-    echo "CBOD will then use GAMADV-XTD3 to query Google directly and provide basic device info on the same Serial Number.<br>";
-    echo "The result from Google will include the Recent User List, where the topmost username is the most recent user of that device.<br>";
-    echo "NOTE: The result from Google is the most current data available and may be newer or different than the local database.<br>";
+    echo "<span> gam print cros fields annotatedAssetId,annotatedLocation,annotatedUser,bootMode,deviceLicenseType,firmwareVersion,firstEnrollmentTime,lastEnrollmentTime,lastKnownNetwork,lastSync,macAddress,model,notes,orgUnitPath,osVersion,platformVersion,serialNumber,status query id:&lt;SerialNumber&gt; </span><br>";
+    echo "<span> gam print crosactivity query id:&lt;SerialNumber&gt; users </span><br>";
+    echo "The results from Google will include the Recent User List, where the topmost username is the most recent user of that device. <br>";
 
     echo "<h3>Serial Number: Clear Profiles</h3>";
     echo "<p>";
-    echo "Enter a Serial Number and click Clear Profiles.<br>";
-    echo "CBOD will use GAMADV-XTD3 to issue the 'wipe_users' command to the device based on the Serial Number query.<br>";
-    echo "NOTE: It is helpful to make sure the device is on while performing this action.<br>";
+    echo "<span> gam cros_sn &lt;SerialNumber&gt; issuecommand command wipe_users doit </span><br>";
+    echo "<b>NOTE:</b> It is helpful to make sure the device is on while performing this action. <br>";
 
     echo "<h3>Serial Number: Remote Powerwash</h3>";
     echo "<p>";
-    echo "Enter a Serial Number and click Remote Powerwash.<br>";
-    echo "CBOD will use GAMADV-XTD3 to issue the 'remote_powerwash' command to the device based on the Serial Number query.<br>";
-    echo "NOTE: It is helpful to make sure the device is on while performing this action.<br>";
+    echo "<span> gam cros_sn &lt;SerialNumber&gt; issuecommand command remote_powerwash doit </span><br>";
+    echo "<b>NOTE:</b> It is helpful to make sure the device is on while performing this action. <br>";
 
     echo "<h3>Serial Number: Disable/Enable</h3>";
     echo "<p>";
-    echo "Enter a Serial Number and click Disable or Reenable.<br>";
-    echo "CBOD will first use GAMADV-XTD3 to query the current status of the device - either ACTIVE or DISABLED - from Google Workspace.<br>";
-    echo "CBOD will then use GAMADV-XTD3 to update (toggle) the status of the device based on the Serial Number query.<br>";
+    echo "Query for current status <span> gam info cros query id:&lt;SerialNumber&gt; status </span><br>";
+    echo "If status = ACTIVE then <span> gam update cros query \"id:&lt;SerialNumber&gt; status:ACTIVE\" action disable </span><br>";
+    echo "If status = DISABLED then <span> gam update cros query \"id:&lt;SerialNumber&gt; status:DISABLED\" action reenable </span><br>";
+
+    echo "<h3>Serial Number: Telemetry</h3>";
+    echo "<p>";
+    echo "<span> gam info crostelemetry &lt;SerialNumber&gt; </span><br>";
     ?>
     <?php include "footer.php" ?>
 </body>
