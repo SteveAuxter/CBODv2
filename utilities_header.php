@@ -12,6 +12,7 @@
         <li><a href="assetid_main.php">Asset ID</a></li>
         <li><a href="serial_main.php">Serial Number</a></li>
         <li><a href="counts_main.php">Counts</a></li>
+        <li><a href="bulkops_main.php">Bulk Operations</a></li>
         <li><a href="datatables_main.php">DataTables</a></li>
         <li><a class="active" href="utilities_main.php">Utilities</a></li>
         <li><a href="beta_main.php">Experimental</a></li>
