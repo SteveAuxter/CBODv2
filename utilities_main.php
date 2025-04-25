@@ -54,8 +54,8 @@
 
     $commandGamVer = sprintf($GAMpath . ' version');
     exec($commandGamVer,$infoGamVer);
-    echo "<p>Advanced GAM Version: <b>" . substr($infoGamVer[0],12,7) . "</b></p>";
-    echo "<p>Advanced GAM Path: <b>" . substr($infoGamVer[4],6,32) . "</b></p>";
+    echo "<p>GAM Version: <b>" . substr($infoGamVer[0],4,8) . "</b></p>";
+    echo "<p>GAM Path: <b>" . substr($infoGamVer[4],6,32) . "</b></p>";
     echo "<p>PHP Version: <b>" . phpversion() . "</b></p>";
     ?>
 
