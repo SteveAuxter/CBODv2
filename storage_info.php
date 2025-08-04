@@ -13,6 +13,7 @@
         <li><a href="beta_main.php">What's This?</a></li>
         <li><a href="battery_info.php">Battery Info</a></li>
         <li><a class="active" href="storage_info.php">Storage Info</a></li>
+        <li><a href="user_device_history.php">User Device History</a></li>
     </ul>
     <hr>
 
