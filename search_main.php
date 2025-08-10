@@ -109,7 +109,7 @@
         }
     } catch (Exception $e) {
         // Display an error message if the database or table does not exist
-        echo "<p>ERROR MESSAGE: " . $e->getMessage() . "</p>";
+        echo "<div class='danger-message'>DATABASE ERROR: " . $e->getMessage() . "</div>";
     } ?>
     <?php include "footer.php"; ?>
 </body>
