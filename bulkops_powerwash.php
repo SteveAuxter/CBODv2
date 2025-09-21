@@ -8,6 +8,19 @@
     form {
         margin-bottom: 20px;
     }
+    fieldset {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
     </style>
 </head>
 <body>
@@ -19,6 +32,7 @@
         <li><a href="bulkops_wipeusers.php">Clear Profiles</a></li>
         <li><a class="active" href="bulkops_powerwash.php">Remote Powerwash</a></li>
         <li><a href="bulkops_clearcustom.php">Clear Custom Fields</a></li>
+        <li><a href="bulkops_newlocation.php">Update Location</a></li>
         <li><a href="bulkops_moveorgunit.php">Move Org Unit</a></li>
     </ul>
     <hr>
@@ -89,14 +103,25 @@
     <?php endif; ?>
 
     <script>
-        function copyToClipboard() {
-            const outputBlock = document.getElementById("output-block");
-            navigator.clipboard.writeText(outputBlock.textContent).then(() => {
-                alert("Commands copied to clipboard!");
-            }).catch(err => {
-                console.error("Failed to copy commands: ", err);
-            });
-        }
+    function copyToClipboard() {
+        const outputBlock = document.getElementById("output-block");
+        navigator.clipboard.writeText(outputBlock.textContent).then(() => {
+            // Add a temporary highlight effect
+            outputBlock.style.backgroundColor = "#d4edda"; // light green
+            outputBlock.style.transition = "background-color 0.5s";
+
+            setTimeout(() => {
+                outputBlock.style.backgroundColor = "#f4f4f4"; // revert to original
+            }, 800);
+        }).catch(err => {
+            console.error("Failed to copy commands: ", err);
+            // Optionally, add a small error style
+            outputBlock.style.backgroundColor = "#f8d7da"; // light red
+            setTimeout(() => {
+                outputBlock.style.backgroundColor = "#f4f4f4";
+            }, 800);
+        });
+    }
     </script>
 
     <?php include "footer.php" ?>
