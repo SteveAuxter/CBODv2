@@ -92,14 +92,15 @@
                 Asset ID
             </label>
         </fieldset>
-
-        <label for="location_field">New Location (update custom field):</label><br>
-        <input type="text" name="location_field" id="location_field" value="<?php echo isset($locationField) ? htmlspecialchars($locationField) : ''; ?>" required>
-        <br><br>
+        <br>
 
         <label for="input_data">Enter Data:</label><br>
         <small>(You can use new lines or commas to separate entries)</small><br>
         <textarea id="input_data" name="input_data" rows="10" cols="40" required><?php echo isset($inputData) ? htmlspecialchars($inputData) : ''; ?></textarea>
+        <br><br>
+
+        <label for="location_field">New Location (update custom field):</label><br>
+        <input type="text" name="location_field" id="location_field" value="<?php echo isset($locationField) ? htmlspecialchars($locationField) : ''; ?>" required>
         <br><br>
 
         <button type="submit">Generate Commands</button>

@@ -8,7 +8,7 @@
 <body>
     <?php include "bulkops_header.php" ?>
     <?php include "variables.php" ?>
-    
+
     <ul class="menu">
         <li><a class="active" href="bulkops_main.php">What do I do?</a></li>
         <li><a href="bulkops_wipeusers.php">Clear Profiles</a></li>
@@ -41,6 +41,12 @@
     echo "gam cros_sn &lt;SerialNumber&gt; update user \"\" notes \"\" assetid \"\" location \"\" <br>";
     echo "gam cros_query asset_id:&lt;AssetID&gt; update user \"\" notes \"\" assetid \"\" location \"\" <br>";
     echo "(FYI: sending double quotes \"\" is the equivalent of sending 'empty' or 'no value') <br>";
+    echo "<h3>Bulk Operations: Update Location</h3>";
+    echo "<p>";
+    echo "gam cros &lt;DeviceID&gt; update location &lt;NewLocation&gt; (fastest option, no query involved) <br>";
+    echo "gam cros_sn &lt;SerialNumber&gt; update location &lt;NewLocation&gt; <br>";
+    echo "gam cros_query asset_id:&lt;AssetID&gt; location &lt;NewLocation&gt; <br>";
+    echo "This operation has an additional field: you enter a New Location and it is added to the generated command(s). <br>";
     echo "<h3>Bulk Operations: Move Org Unit</h3>";
     echo "<p>";
     echo "gam cros &lt;DeviceID&gt; update ou &lt;OrgUnitPath&gt; (fastest option, no query involved) <br>";
