@@ -95,7 +95,7 @@
 
                 // Open the CSV file
                 if (($handle = fopen($file, 'r')) !== FALSE) {
-                    fgetcsv($handle); // Skip the header row
+                    fgetcsv($handle, 1000, ';', '"', '\\'); // Skip the header row
 
                     // Prepare statement for inserting rows
                     $stmt = $db->prepare("INSERT INTO devices (
@@ -140,7 +140,7 @@
                         :status
                     )");
 
-                    while (($devices = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                    while (($devices = fgetcsv($handle, 1000, ';', '"', '\\')) !== FALSE) {
                         // Validate row data
                         if (count($devices) == 19) {
                             // Bind values and execute insert statement
@@ -186,3 +186,4 @@
     <?php include "footer.php" ?>
 </body>
 </html>
+
