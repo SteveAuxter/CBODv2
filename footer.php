@@ -9,7 +9,8 @@
     <center>
         <hr>
         <h3>Thank you for using Chromebooks On Demand (CBOD) v2</h3>
-        <a href="https://github.com/SteveAuxter/CBODv2">CBODv2 on Github</a> | &copy Steve Auxter 2025
+        <a href="https://github.com/SteveAuxter/CBODv2">CBODv2 on Github</a> | &copy Steve Auxter 2024-2026
     </center>
 </body>
 </html>
+
