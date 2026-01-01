@@ -29,8 +29,7 @@
 
     <ul class="menu">
         <li><a href="bulkops_main.php">What do I do?</a></li>
-        <li><a href="bulkops_wipeusers.php">Clear Profiles</a></li>
-        <li><a href="bulkops_powerwash.php">Remote Powerwash</a></li>
+        <li><a href="bulkops_allinone.php">All-in-One</a></li>
         <li><a class="active" href="bulkops_clearcustom.php">Clear Custom Fields</a></li>
         <li><a href="bulkops_newlocation.php">Update Location</a></li>
         <li><a href="bulkops_moveorgunit.php">Move Org Unit</a></li>
