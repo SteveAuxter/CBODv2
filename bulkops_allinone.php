@@ -40,12 +40,22 @@
     // Check if the form was submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the data type and input from the form
-        $dataType = htmlspecialchars(trim($_POST["data_type"]));
-        $inputData = htmlspecialchars(trim($_POST["input_data"]));
-        $commandType = htmlspecialchars(trim($_POST["command_type"]));
+        $dataType = (trim($_POST["data_type"]));
+        $commandType = (trim($_POST["command_type"]));
+        $inputData = (trim($_POST["input_data"]));
 
         // Validate the input
         if (!empty($dataType) && !empty($inputData)) {
+            $allowedDataTypes = ["device_id", "serial_number", "asset_id"];
+            if (!in_array($dataType, $allowedDataTypes, true)) {
+                $error = "Invalid data type selected.";
+            }
+
+            $allowedCommandTypes = ["wipe_users", "remote_powerwash", "reboot"];
+            if (!in_array($commandType, $allowedCommandTypes, true)) {
+                $error = "Invalid command selected.";
+            }
+
             // Normalize the input to handle both comma-separated and newline-separated data
             $inputData = str_replace(",", "\n", $inputData);
             $dataArray = array_filter(array_map('trim', explode("\n", $inputData)));
@@ -54,17 +64,17 @@
             $commands = array_map(function($data) use ($dataType, $commandType) {
                 switch ($dataType) {
                     case "device_id":
-                    return "gam cros " . $data . " issuecommand command " . $commandType . " doit";
+                    return "gam cros {$data} issuecommand command {$commandType} doit";
                     case "serial_number":
-                    return "gam cros_sn " . $data . " issuecommand command " . $commandType . " doit";
+                    return "gam cros_sn {$data} issuecommand command {$commandType} doit";
                     case "asset_id":
-                    return "gam cros_query asset_id:" . $data . " issuecommand command " . $commandType . " doit";
+                    return "gam cros_query asset_id:{$data} issuecommand command {$commandType} doit";
                     default:
                     return "Invalid data type selected.";
                 }
             }, $dataArray);
         } else {
-            $error = "Please select a data type, a remote command, and provide the input.";
+            $error = "Please make your selection(s) and provide the input.";
         }
     }
     ?>
@@ -112,14 +122,16 @@
 
         <label for="input_data">Enter Data:</label><br>
         <small>(You can use new lines or commas to separate entries)</small><br>
-        <textarea id="input_data" name="input_data" rows="10" cols="40" required></textarea><br><br>
+        <!-- The <textarea> line below needs to remain a single line, otherwise it will add unecessary spaces into the textbox -->
+        <textarea id="input_data" name="input_data" rows="10" cols="40" required><?= htmlspecialchars($inputData ?? "") ?></textarea>
+        <br><br>
         <button type="submit">Generate Commands</button>
     </form>
 
     <?php if (isset($commands)): ?>
         <div class="bulk-output">
             <button class="select-all-button" onclick="copyToClipboard()">Select All</button>
-            <pre id="output-block"><?php echo implode("\n", $commands); ?></pre>
+            <pre id="output-block"><?php echo htmlspecialchars(implode("\n", $commands)); ?></pre>
         </div>
     <?php elseif (isset($error)): ?>
         <p class="bulk-error"><?php echo $error; ?></p>
